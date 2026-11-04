@@ -1,0 +1,31 @@
+Improve the existing "Margin" study notebook. Keep everything that already works: on-device extraction, immutable source excerpts, approval gate, local persistence, JSON backup, demo notebook, and the visual style. Do not add any external AI service. Show me the smallest working version of each change, then stop.
+
+1. BILINGUAL UI (ES/EN)
+- Add a visible language switch (EN | ES) in the sidebar header and in Settings. Default: browser language; persist the choice in localStorage.
+- Translate every UI string, empty state, label, tooltip, toast, dialog and generated template (e.g. "Investigation prompt (generated)", "Generated arrangement") using an i18n dictionary file (en.json / es.json). No hardcoded strings.
+- Set <html lang> dynamically. Format dates and numbers with the selected locale (today the date shows in Spanish while the UI is English: fix this).
+- Never translate source excerpts. They stay in the original language. Labels around them get translated.
+
+2. STUDY GUIDE SETUP
+- Add a "Study goal" panel per source: subject/goal (prefilled for demo: "Designing AI-supported learning environments for university teachers"), and priority (choose one or more: concept recall, practical how-to knowledge, exam review, meeting preparation; demo default: concept recall + practical how-to).
+- The priority reorders the review inbox and study sessions (e.g. how-to priority surfaces Process/How-to items first and builds step guides first).
+
+3. REVIEW FLOW: ONE CARD AT A TIME
+- Add a "Focused review" mode: one candidate per screen, in this order: (a) source excerpt first, (b) the app's explanation/title below it, (c) two required checks: "Is the explanation accurate to the source?" and "Is it worth studying?", (d) actions: Approve, Edit, Discard. Keyboard shortcuts A/E/D.
+- Give each candidate an optional "Explanation" field (user-written or template-generated, always labeled as interpretation).
+- UNSUPPORTED-ADDITION DETECTOR: compare the title and explanation against the excerpt. Highlight content words that do not appear in the excerpt, and flag causal or evaluative connectors (because, due to, caused by, therefore, porque, debido a, por lo tanto, causó) with a warning: "This adds a claim not in your source." Offer one-click "Trim to source."
+- Nothing generated is saved to the library without explicit user approval. Remove app-made "demo approvals": demo items start pending.
+
+4. FIX GENERATED TITLES
+- Titles must never alter source punctuation or duplicate words. Detect heading+sentence merges and split them. If a title is truncated, end at a word boundary with "…" and mark it "label (generated)".
+
+5. BETTER PRACTICE AND UNDERSTANDING
+- Replace title-to-excerpt matching quizzes with cloze deletions from the excerpt (blank a key term) and "which page/source says this?" questions.
+- Flashcards: recall first, then reveal the excerpt. Before revealing, ask for confidence (1–4).
+- Understanding dashboard: add calibration (confidence vs. correctness), items due for review (simple spaced repetition), and "added-claim warnings caught."
+
+6. SEARCH AND ACCESSIBILITY
+- Search must cover excerpt text and full source text, not only titles/notes/tags, with results showing the page.
+- Remove maximum-scale=1 from the viewport meta. Check layouts at 375px, 768px and 1280px. Keep visible focus states and keyboard access to all actions.
+
+Acceptance check: switch to ES and confirm no English remains outside source excerpts; add the explanation "Rome fell in 476 AD because of barbarian invasions" to an excerpt that says "Rome fell in 476 AD" and confirm "because of barbarian invasions" is flagged; reload the page and confirm approved items and language persist.

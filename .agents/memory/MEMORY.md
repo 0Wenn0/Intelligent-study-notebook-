@@ -1,0 +1,1 @@
+- [Privacy and grounding](privacy-and-grounding.md) — smallest notebook is device-local; never bundle real uploaded study material into public application assets.

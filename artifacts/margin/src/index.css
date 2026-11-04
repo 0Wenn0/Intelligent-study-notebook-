@@ -1,0 +1,328 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --color-pencil: hsl(var(--pencil));
+  --color-highlight: hsl(var(--highlight));
+  --color-sage: hsl(var(--sage));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: hsl(224 30% 20% / 0.12);
+  --badge-outline: hsl(224 30% 20% / 0.08);
+  --opaque-button-border-intensity: -8;
+  --elevate-1: hsl(224 30% 20% / 0.035);
+  --elevate-2: hsl(224 30% 20% / 0.08);
+
+  /* Paper, iron-gall ink, red-pencil margin rule, ochre highlighter */
+  --background: 40 33% 95%;
+  --foreground: 224 32% 17%;
+  --border: 36 20% 83%;
+  --card: 42 45% 98%;
+  --card-foreground: 224 32% 17%;
+  --card-border: 36 20% 85%;
+  --sidebar: 38 28% 91%;
+  --sidebar-foreground: 224 28% 22%;
+  --sidebar-border: 36 18% 82%;
+  --sidebar-primary: 228 38% 30%;
+  --sidebar-primary-foreground: 42 40% 97%;
+  --sidebar-accent: 38 30% 85%;
+  --sidebar-accent-foreground: 224 32% 17%;
+  --sidebar-ring: 228 38% 40%;
+  --popover: 42 45% 98%;
+  --popover-foreground: 224 32% 17%;
+  --popover-border: 36 20% 82%;
+  --primary: 228 38% 30%;
+  --primary-foreground: 42 40% 97%;
+  --secondary: 38 30% 89%;
+  --secondary-foreground: 224 32% 20%;
+  --muted: 38 24% 90%;
+  --muted-foreground: 225 12% 40%;
+  --accent: 44 70% 86%;
+  --accent-foreground: 30 45% 20%;
+  --destructive: 4 60% 44%;
+  --destructive-foreground: 42 40% 97%;
+  --input: 36 18% 78%;
+  --ring: 228 38% 40%;
+  --pencil: 6 58% 50%;
+  --highlight: 46 82% 84%;
+  --sage: 150 22% 38%;
+  --chart-1: 228 38% 30%;
+  --chart-2: 6 58% 50%;
+  --chart-3: 150 22% 38%;
+  --chart-4: 40 70% 50%;
+  --chart-5: 225 12% 50%;
+
+  --app-font-sans: 'Avenir Next', 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --app-font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Charter, 'Bitstream Charter', Georgia, serif;
+  --app-font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+  --radius: 0.4rem;
+  --shadow-2xs: 0 1px 0 hsl(224 30% 20% / 0.04);
+  --shadow-xs: 0 1px 2px hsl(224 30% 20% / 0.05);
+  --shadow-sm: 0 1px 2px hsl(224 30% 20% / 0.06), 0 1px 1px hsl(224 30% 20% / 0.03);
+  --shadow: 0 2px 6px -2px hsl(224 30% 20% / 0.1);
+  --shadow-md: 0 6px 16px -8px hsl(224 30% 20% / 0.18);
+  --shadow-lg: 0 12px 28px -12px hsl(224 30% 20% / 0.22);
+  --shadow-xl: 0 18px 40px -16px hsl(224 30% 20% / 0.26);
+  --shadow-2xl: 0 24px 60px -20px hsl(224 30% 20% / 0.3);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+  --opaque-button-border-intensity: 9;
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+  --background: 224 24% 11%;
+  --foreground: 40 25% 90%;
+  --border: 224 16% 22%;
+  --card: 224 22% 14%;
+  --card-foreground: 40 25% 90%;
+  --card-border: 224 16% 22%;
+  --sidebar: 224 24% 9%;
+  --sidebar-foreground: 40 25% 88%;
+  --sidebar-border: 224 16% 20%;
+  --sidebar-primary: 40 60% 70%;
+  --sidebar-primary-foreground: 224 24% 11%;
+  --sidebar-accent: 224 18% 18%;
+  --sidebar-accent-foreground: 40 25% 90%;
+  --sidebar-ring: 40 60% 70%;
+  --popover: 224 22% 14%;
+  --popover-foreground: 40 25% 90%;
+  --popover-border: 224 16% 22%;
+  --primary: 40 60% 70%;
+  --primary-foreground: 224 24% 11%;
+  --secondary: 224 18% 18%;
+  --secondary-foreground: 40 25% 90%;
+  --muted: 224 18% 18%;
+  --muted-foreground: 40 10% 65%;
+  --accent: 40 30% 24%;
+  --accent-foreground: 40 25% 90%;
+  --destructive: 4 60% 52%;
+  --destructive-foreground: 40 25% 95%;
+  --input: 224 16% 30%;
+  --ring: 40 60% 70%;
+  --pencil: 6 60% 60%;
+  --highlight: 40 40% 26%;
+  --sage: 150 25% 55%;
+  --chart-1: 40 60% 70%;
+  --chart-2: 6 60% 60%;
+  --chart-3: 150 25% 55%;
+  --chart-4: 200 30% 60%;
+  --chart-5: 40 10% 65%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--app-font-serif);
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    font-family: var(--app-font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+  .margin-rule {
+    position: relative;
+  }
+  .margin-rule::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: hsl(var(--pencil) / 0.55);
+    box-shadow: 4px 0 0 hsl(var(--pencil) / 0.22);
+  }
+  .excerpt {
+    font-family: var(--app-font-serif);
+    background: linear-gradient(transparent 0, hsl(var(--highlight) / 0.55) 0);
+    border-left: 3px solid hsl(40 70% 52%);
+  }
+  .reveal {
+    animation: reveal 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .bar {
+    height: 6px;
+    border-radius: 999px;
+    background: hsl(var(--muted));
+    overflow: hidden;
+  }
+  .bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    transform-origin: left;
+    animation: grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+    }
+  }
+}
+
+@layer utilities {
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+  .no-default-hover-elevate {
+  }
+  .no-default-active-elevate {
+  }
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: 999;
+  }
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}

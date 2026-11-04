@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Margin — Your study notebook"
+description = "A private, local-first source-grounded study notebook with review, concepts, flashcards, quizzes, and focused sessions."
+version = "1.0.0"
+id = "artifacts/margin"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24074
+
+[services.development]
+run = "pnpm --filter @workspace/margin run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/margin", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/margin/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24074"
+BASE_PATH = "/"
