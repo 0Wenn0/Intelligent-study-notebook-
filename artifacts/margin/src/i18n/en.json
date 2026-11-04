@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Margin",
+    "name": "Glosa",
     "tagline": "your study notebook",
     "import": "Upload",
     "importPdf": "Upload a document",

@@ -18,7 +18,7 @@ export function StorageBanner() {
       </span>
       {status.state === 'corrupt' ? (
         <>
-          <Button size="sm" variant="outline" onClick={() => downloadJson('margin-unreadable-data.json', { raw: status.raw })} data-testid="button-download-raw">{t('storage.downloadRaw')}</Button>
+          <Button size="sm" variant="outline" onClick={() => downloadJson('glosa-datos-sin-leer.json', { raw: status.raw })} data-testid="button-download-raw">{t('storage.downloadRaw')}</Button>
           <Button size="sm" variant="destructive" onClick={resetEverything} data-testid="button-start-fresh">{t('storage.startFresh')}</Button>
         </>
       ) : (

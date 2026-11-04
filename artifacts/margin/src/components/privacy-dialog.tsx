@@ -10,7 +10,7 @@ import { useI18n } from '@/i18n';
 import { LangSwitch } from './bits';
 
 export function exportBackup(data: NotebookData) {
-  downloadJson(`margin-backup-${new Date().toISOString().slice(0, 10)}.json`, { app: 'margin', exportedAt: new Date().toISOString(), data });
+  downloadJson(`glosa-copia-${new Date().toISOString().slice(0, 10)}.json`, { app: 'glosa', exportedAt: new Date().toISOString(), data });
 }
 
 export function PrivacyDialog({ onShowHowTo }: { onShowHowTo?: () => void }) {

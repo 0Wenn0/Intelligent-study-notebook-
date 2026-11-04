@@ -170,7 +170,7 @@ export function parseBackup(text: string): { ok: true; data: NotebookData } | { 
     return { ok: false, error: translate('storage.invalidBackupJson') };
   }
   const obj = json as { app?: string; data?: unknown };
-  if (!obj || typeof obj !== 'object' || obj.app !== 'margin' || !obj.data) {
+  if (!obj || typeof obj !== 'object' || (obj.app !== 'glosa' && obj.app !== 'margin') /* 'margin' = backups from before the rename */ || !obj.data) {
     return { ok: false, error: translate('storage.invalidEnvelope') };
   }
   return validateNotebook(obj.data);
