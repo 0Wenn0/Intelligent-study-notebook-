@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { BookMarked, FileText, GraduationCap, Inbox, LayoutPanelLeft, LineChart, Plus, ShieldCheck } from 'lucide-react';
 import { useNav, useNotebook, type View } from '@/store/notebook';
 import { cn } from '@/lib/utils';
@@ -7,6 +7,7 @@ import { SourcePageDialog } from './source-page-dialog';
 import { AddSourceDialog } from './add-source-dialog';
 import { PrivacyDialog } from './privacy-dialog';
 import { LangSwitch } from './bits';
+import { WelcomeDialog } from './welcome-dialog';
 import { useI18n } from '@/i18n';
 
 const NAV: { id: View; icon: typeof Inbox }[] = [
@@ -19,17 +20,18 @@ const NAV: { id: View; icon: typeof Inbox }[] = [
 ];
 
 export function Shell({ children }: { children: ReactNode }) {
-  const { data } = useNotebook();
+  const { data, markWelcomeSeen } = useNotebook();
   const { view, go, setAddOpen, setPrivacyOpen } = useNav();
   const { t, persistFailed } = useI18n();
   const pending = data.items.filter((i) => i.status === 'pending').length;
   const approved = data.items.filter((i) => i.status === 'approved').length;
 
-  useEffect(() => {
-    if (!data.prefs.privacySeen) setPrivacyOpen(true);
-    // first-run only
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // First visit: explain what the app is for before anything about data or settings.
+  const [welcomeOpen, setWelcomeOpen] = useState(() => !data.prefs.welcomeSeen);
+  const closeWelcome = () => {
+    setWelcomeOpen(false);
+    if (!data.prefs.welcomeSeen) markWelcomeSeen();
+  };
 
   const count = (id: View) => (id === 'review' ? pending : id === 'library' ? approved : null);
 
@@ -101,7 +103,8 @@ export function Shell({ children }: { children: ReactNode }) {
       </div>
       <SourcePageDialog />
       <AddSourceDialog />
-      <PrivacyDialog />
+      <PrivacyDialog onShowHowTo={() => { setPrivacyOpen(false); setWelcomeOpen(true); }} />
+      <WelcomeDialog open={welcomeOpen} onClose={closeWelcome} onUpload={() => setAddOpen(true)} />
     </div>
   );
 }

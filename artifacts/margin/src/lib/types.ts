@@ -100,7 +100,7 @@ export interface NotebookData {
   ratings: Rating[];
   attempts: Attempt[];
   warningEvents: WarningEvent[];
-  prefs: { privacySeen: boolean };
+  prefs: { privacySeen: boolean; welcomeSeen?: boolean };
 }
 
 export const uid = (p = 'id') =>

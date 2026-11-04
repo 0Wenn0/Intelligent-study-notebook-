@@ -4,6 +4,7 @@ import { useNav, useNotebook } from '@/store/notebook';
 import { DemoMark, ExcerptBlock, KindBadge, SectionLabel } from '@/components/bits';
 import { isDue } from '@/lib/study';
 import { useI18n } from '@/i18n';
+import { HowItWorks } from '@/components/how-it-works';
 
 export default function Overview() {
   const { data } = useNotebook();
@@ -32,7 +33,14 @@ export default function Overview() {
         <h1 className="font-display max-w-3xl text-4xl leading-[1.08] md:text-[3.4rem]">
           {t('overview.headline1')} <em className="text-primary">{t('overview.headlineEm')}</em> {t('overview.headline2')}
         </h1>
+        <p className="mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-muted-foreground" data-testid="text-overview-lead">{t('overview.lead')}</p>
       </header>
+
+      {approved.length === 0 && (
+        <div className="reveal mb-10" style={{ animationDelay: '40ms' }}>
+          <HowItWorks heading />
+        </div>
+      )}
 
       {userSources.length === 0 && (
         <section className="reveal mb-10 grid gap-5 rounded-xl border bg-card p-6 shadow-sm md:grid-cols-[1fr_auto] md:items-center md:p-8" style={{ animationDelay: '60ms' }}>

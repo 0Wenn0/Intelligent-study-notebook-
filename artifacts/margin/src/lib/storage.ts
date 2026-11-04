@@ -68,7 +68,7 @@ const schema = z.object({
   warningEvents: z.array(z.object({
     id: z.string(), itemId: z.string(), signature: z.string(), date: z.string(),
   })).default([]),
-  prefs: z.object({ privacySeen: z.boolean() }),
+  prefs: z.object({ privacySeen: z.boolean(), welcomeSeen: z.boolean().optional() }),
 });
 
 export function validateNotebook(value: unknown): { ok: true; data: NotebookData } | { ok: false; error: string } {

@@ -23,6 +23,7 @@ interface Ctx {
   restoreDemo: () => void;
   resetEverything: () => void;
   markPrivacySeen: () => void;
+  markWelcomeSeen: () => void;
 }
 
 const NotebookCtx = createContext<Ctx | null>(null);
@@ -161,6 +162,7 @@ export function NotebookProvider({ children }: { children: ReactNode }) {
         setData(buildDemoNotebook());
       },
       markPrivacySeen: () => mutate((d) => ({ ...d, prefs: { ...d.prefs, privacySeen: true } })),
+      markWelcomeSeen: () => mutate((d) => ({ ...d, prefs: { ...d.prefs, privacySeen: true, welcomeSeen: true } })),
     }),
     [data, status, mutate],
   );

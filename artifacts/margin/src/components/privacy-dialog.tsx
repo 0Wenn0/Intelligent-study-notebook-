@@ -13,7 +13,7 @@ export function exportBackup(data: NotebookData) {
   downloadJson(`margin-backup-${new Date().toISOString().slice(0, 10)}.json`, { app: 'margin', exportedAt: new Date().toISOString(), data });
 }
 
-export function PrivacyDialog() {
+export function PrivacyDialog({ onShowHowTo }: { onShowHowTo?: () => void }) {
   const { data, replaceAll, markPrivacySeen, removeDemo, restoreDemo, resetEverything } = useNotebook();
   const { privacyOpen, setPrivacyOpen } = useNav();
   const { toast } = useToast();
@@ -51,6 +51,9 @@ export function PrivacyDialog() {
           <DialogTitle className="font-display text-2xl font-normal">{t('settings.title')}</DialogTitle>
           <DialogDescription>{t('settings.description')}</DialogDescription>
         </DialogHeader>
+        {onShowHowTo && (
+          <button type="button" onClick={onShowHowTo} className="justify-self-start text-sm text-primary underline underline-offset-4" data-testid="button-show-howto">{t('settings.howTo')}</button>
+        )}
         <div className="grid gap-2 rounded-lg border bg-muted/40 p-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="eyebrow">{t('app.language')}</div>
