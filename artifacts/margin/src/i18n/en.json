@@ -10,7 +10,7 @@
     "languageSwitch": "Interface language",
     "mainNav": "Main navigation",
     "langNotSaved": "The language could not be saved. It applies until you close the tab.",
-    "documentTitle": "Margin — Study your readings without losing the source"
+    "documentTitle": "{app} — Study your readings without losing the source"
   },
   "nav": {
     "overview": "Home",
@@ -89,7 +89,7 @@
     "full": "The browser is out of space and your last change was not saved. Download a backup and remove documents you no longer use.",
     "saveFailed": "Your latest change could not be saved: {error}",
     "invalidBackupJson": "This file is not a valid backup.",
-    "invalidEnvelope": "This file is not a Margin backup.",
+    "invalidEnvelope": "This file is not a {app} backup.",
     "invalidBackup": "The backup is damaged or incomplete: {error}",
     "orphanCitation": "A note quotes a document that is not in the backup: {title}",
     "invalidExcerpt": "A quote does not match its page: {title}",
@@ -102,14 +102,14 @@
     "title": "Something went wrong",
     "body": "This part of the app hit an error. The rest of the app is still running.",
     "notFoundTitle": "Page not found",
-    "notFoundBody": "This section does not exist in Margin."
+    "notFoundBody": "This section does not exist in {app}."
   },
   "pdf": {
     "loadFailed": "The PDF reader could not open in this browser. Try pasting the text.",
     "password": "This PDF has a password. Remove it and upload it again.",
     "unreadable": "This PDF could not be read. It may be damaged.",
-    "noText_one": "This PDF has no selectable text ({count} page). It looks scanned, and Margin cannot read images. Copy and paste the text instead.",
-    "noText_other": "This PDF has no selectable text ({count} pages). It looks scanned, and Margin cannot read images. Copy and paste the text instead."
+    "noText_one": "This PDF has no selectable text ({count} page). It looks scanned, and {app} cannot read images. Copy and paste the text instead.",
+    "noText_other": "This PDF has no selectable text ({count} pages). It looks scanned, and {app} cannot read images. Copy and paste the text instead."
   },
   "add": {
     "eyebrow": "New document",
@@ -212,7 +212,7 @@
     "demoEyebrow": "You are seeing an example",
     "demoBody": "The example document is about learning environments. Its sentences are in \"To review\" so you can try the process. Nothing becomes a note without your approval.",
     "manage": "Settings and data",
-    "lead": "Upload a PDF or your notes. Margin suggests the key sentences, you choose which to keep, and then you practise with flashcards and quizzes. Every note shows the exact page it came from.",
+    "lead": "Upload a PDF or your notes. {app} suggests the key sentences, you choose which to keep, and then you practise with flashcards and quizzes. Every note shows the exact page it came from.",
     "howTitle": "How it works",
     "how1Title": "Upload a document",
     "how1Body": "A PDF with text, or your pasted notes.",
@@ -232,7 +232,7 @@
     "emptyBody": "Upload a PDF with text, a TXT or MD file, or paste your notes.",
     "demoBadge": "Example",
     "userBadge": "Your document",
-    "meta": "{pages} pp · {items} notes · {topic}",
+    "meta": "{pages} pp · {items} sentences · {topic}",
     "demoNote": "Example document included with the app.",
     "imported": "Uploaded on {date}.",
     "importedFrom": "Uploaded on {date} from {file}.",
@@ -298,7 +298,7 @@
     "openLibrary": "See My notes",
     "noDiscarded": "No discarded sentences",
     "noDiscardedBody": "If you discard a sentence, it appears here and you can recover it.",
-    "checkAccurate": "The title and explanation say the same as the quote",
+    "checkAccurate": "The note says the same as the quote",
     "checkWorthwhile": "It helps me study",
     "candidateOf": "sentence {n} of {total}",
     "shortcuts": "Keyboard shortcuts: A keep · E edit · D discard",
@@ -376,7 +376,7 @@
   "flash": {
     "card": "card {n} of {total}",
     "endSave": "finish",
-    "recall": "Try to remember what the document says about this.",
+    "recall": "Complete the idea from memory. Then compare it with the quote.",
     "reveal": "See the quote",
     "rateAfter": "Compare with what you remembered. How did it go?",
     "again": "Didn't remember",
@@ -466,10 +466,13 @@
   },
   "welcome": {
     "eyebrow": "Welcome",
-    "title": "Margin helps you study what you read",
+    "title": "{app} helps you study what you read",
     "body": "Upload a PDF or your notes. The app suggests the key sentences and you choose which to keep. Then you practise with flashcards and quizzes, and every answer shows the exact page it came from.",
     "privacy": "Everything stays in your browser: no account needed, and your text is not sent to any AI.",
     "tryDemo": "Explore the example",
     "upload": "Upload my document"
+  },
+  "demo": {
+    "topic": "Learning environments"
   }
 }

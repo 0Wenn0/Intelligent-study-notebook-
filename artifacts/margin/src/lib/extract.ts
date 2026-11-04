@@ -21,7 +21,7 @@ function classify(s: string): { kind: Kind; score: number } {
   const t = s.trim();
   if (
     /^(to [a-z]+[^,]*,|first,|begin by|start by|use |make |ensure |avoid |try |set |choose |create |write |read |keep |check |apply |add |remove |select |follow |identify |review |record |compare |list |plan |schedule |place |limit |turn |reserve |return )/i.test(t) ||
-    /\bhow to\b/i.test(t) || /^(primero|comienza|empieza|elige|crea|escribe|revisa|identifica|registra|compara|define|selecciona)\b/iu.test(t) || /\bcómo\b/iu.test(t)
+    /\bhow to\b/i.test(t) || /^(primero|comienza|empieza|elige|crea|escribe|revisa|identifica|registra|compara|define|selecciona|plantea|acuerden|reúnan|discutan|revisen|lee|usa|evita|planea|valora)(?![\p{L}])/iu.test(t) || /^¿?cómo \p{L}+(ar|er|ir)(?![\p{L}])/iu.test(t)
   )
     return { kind: 'How-to', score: 3 };
   if (/\b(steps?|stages?|phases?|then|next|afterwards|finally|process|procedure|sequence|cycle|over time|pasos?|etapas?|fases?|luego|después|finalmente|proceso|procedimiento|secuencia|ciclo)\b/iu.test(t))
@@ -30,7 +30,8 @@ function classify(s: string): { kind: Kind; score: number } {
     return { kind: 'Terminology', score: 3 };
   if (/\b(system|systems|components?|consists? of|composed of|structure|framework|architecture|network|interacts?|mechanism|layers?|parts?|sistemas?|componentes?|estructura|marco|red|mecanismo|partes?)\b/iu.test(t))
     return { kind: 'System', score: 2.2 };
-  if (/\b(is|are) (a|an|the)\b/i.test(t) || /\b(concept|idea|principle|theory|model|because)\b/i.test(t))
+  if (/\b(is|are) (a|an|the)\b/i.test(t) || /\b(concept|idea|principle|theory|model|because)\b/i.test(t) ||
+      /(^|\s)(es|son) (un|una|el|la|los|las)\s/iu.test(t) || /(^|\s)(concepto|idea|principio|teoría|modelo)(?![\p{L}])/iu.test(t))
     return { kind: 'Concept', score: 2 };
   return { kind: 'Concept', score: 1 };
 }
@@ -68,7 +69,7 @@ export function sentenceSegments(text: string): string[] {
       const rest = lines.slice(1).join('\n').trim();
       if (heading.split(/\s+/u).length <= 10 && heading.length < 110 &&
           !/[.!?,;]$/u.test(heading) && /[.!?]/u.test(rest) &&
-          (/^\p{Lu}/u.test(rest) || /^\d+[.)]/u.test(rest))) {
+          (/^[¿¡"'«“(]*\p{Lu}/u.test(rest) || /^\d+[.)]/u.test(rest))) {
         prose = rest;
       }
     }

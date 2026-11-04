@@ -47,6 +47,10 @@ export function translate(key: string, params?: Record<string, string | number>,
     s = lookup(dict, `${key}_${params.count === 1 ? 'one' : 'other'}`) ?? lookup(DICTS.en, `${key}_${params.count === 1 ? 'one' : 'other'}`);
   }
   s = s ?? lookup(dict, key) ?? lookup(DICTS.en, key) ?? key;
+  // The product name lives in one key (app.name) so renaming the app is a one-line change.
+  if (key !== 'app.name' && s.includes('{app}') && params?.app === undefined) {
+    s = s.split('{app}').join(lookup(dict, 'app.name') ?? lookup(DICTS.en, 'app.name') ?? '');
+  }
   if (params) {
     s = s.replace(/\{(\w+)\}/g, (m, p: string) => {
       const v = params[p];

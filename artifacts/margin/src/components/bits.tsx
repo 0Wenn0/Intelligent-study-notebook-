@@ -49,6 +49,22 @@ export function claimExplanation(item: Item): string {
   return item.generated && !item.edited ? '' : item.body;
 }
 
+/** An unedited automatic title is just the start of the quote, so showing it again adds nothing. */
+export function titleIsQuote(item: Item): boolean {
+  return !!item.generatedLabel && !item.edited && item.kind !== 'Question';
+}
+
+/** Flashcard front: a cue that does not give away the answer. */
+export function recallCue(item: Item): string {
+  if (!titleIsQuote(item)) return item.title;
+  const quote = item.excerpts[0]?.text ?? item.title;
+  const words = [...quote.matchAll(/\S+/gu)];
+  const keep = Math.max(3, Math.min(6, Math.floor(words.length * 0.4)));
+  if (words.length <= keep + 1) return item.title;
+  const last = words[keep - 1];
+  return quote.slice(0, last.index! + last[0].length).replace(/[,;:]$/u, '') + '…';
+}
+
 export function excerptText(item: Pick<Item, 'excerpts'>): string {
   return item.excerpts.map((e) => e.text).join('\n\n');
 }

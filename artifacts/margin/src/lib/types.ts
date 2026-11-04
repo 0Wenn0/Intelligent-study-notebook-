@@ -20,6 +20,8 @@ export interface Source {
   createdAt: string;
   origin: SourceOrigin;
   fileName?: string;
+  /** language of the bundled example document */
+  lang?: 'en' | 'es';
   studyGoal?: string;
   priorities?: Priority[];
 }

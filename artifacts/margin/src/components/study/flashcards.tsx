@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { Confidence, Item, RatingValue } from '@/lib/types';
 import { useNotebook } from '@/store/notebook';
-import { DemoMark, ExcerptBlock, Interpretation, KindBadge, SectionLabel } from '@/components/bits';
+import { DemoMark, ExcerptBlock, Interpretation, KindBadge, SectionLabel, recallCue } from '@/components/bits';
 import { ConfidencePicker } from './confidence';
 import { isDue, orderItems } from '@/lib/study';
 import { useI18n } from '@/i18n';
@@ -72,7 +72,7 @@ export function Flashcards({ items }: { items: Item[] }) {
           <DemoMark item={card} />
           {isDue(card) && <span className="font-mono text-[10px] uppercase tracking-wider text-[hsl(var(--pencil))]">{t('flash.dueBadge')}</span>}
         </div>
-        <h3 className="font-display text-2xl leading-snug break-words md:text-3xl">{card.title}</h3>
+        <h3 className="font-display text-2xl leading-snug break-words md:text-3xl" data-testid="text-flash-cue">{recallCue(card)}</h3>
         {!shown ? (
           <div className="mt-8 grid gap-4">
             <p className="text-sm text-muted-foreground">{t('flash.recall')}</p>

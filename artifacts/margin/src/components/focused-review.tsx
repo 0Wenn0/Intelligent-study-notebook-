@@ -6,7 +6,7 @@ import type { Item } from '@/lib/types';
 import { analyzeClaims } from '@/lib/claims';
 import { useNotebook } from '@/store/notebook';
 import { useI18n } from '@/i18n';
-import { ClaimText, ClaimWarning, DemoMark, ExcerptBlock, GeneratedLabelMark, KindBadge, SectionLabel, claimExplanation, displayBody, excerptText } from './bits';
+import { ClaimText, ClaimWarning, DemoMark, ExcerptBlock, GeneratedLabelMark, KindBadge, SectionLabel, claimExplanation, displayBody, excerptText, titleIsQuote } from './bits';
 import { cn } from '@/lib/utils';
 
 interface Props {
@@ -90,8 +90,12 @@ export function FocusedReview({ items, onApprove, onDiscard, onEdit, editing }: 
       <div className="grid gap-2">{item.excerpts.map((e, k) => <ExcerptBlock key={k} excerpt={e} />)}</div>
 
       <div className="mt-6 border-t border-dashed pt-5">
-        <SectionLabel>{t('review.title_label')}</SectionLabel>
-        <h3 className="break-words font-display text-2xl leading-snug" data-testid="text-focused-title"><ClaimText tokens={analysis.titleTokens} /></h3>
+        {!titleIsQuote(item) && (
+          <>
+            <SectionLabel>{t('review.title_label')}</SectionLabel>
+            <h3 className="break-words font-display text-2xl leading-snug" data-testid="text-focused-title"><ClaimText tokens={analysis.titleTokens} /></h3>
+          </>
+        )}
         {showBody && (
           <div className="mt-4">
             <SectionLabel tone={item.generated ? 'pencil' : 'ink'}>{item.generated ? (item.kind === 'Question' ? t('templates.investigationLabel') : t('interpretation.generated')) : t('interpretation.yours')}</SectionLabel>

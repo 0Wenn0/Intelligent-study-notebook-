@@ -44,7 +44,10 @@ export interface QuizQuestion {
   excerpt: Excerpt;
 }
 
-const STOP = new Set(('about above after again against before being below between could during every first further having into itself other should their there these those through under until where which while would source excerpt learning material the and for that with from this then have they were what when your').split(' '));
+const STOP = new Set((
+  'about above after again against before being below between could during every first further having into itself other should their there these those through under until where which while would source excerpt learning material the and for that with from this then have they were what when your next finally also can each make made more most some such than them only over same very will just ' +
+  'para como cómo este esta estas estos ese esa esos esas entre sobre desde hasta donde dónde cuando cuándo luego después primero finalmente puede pueden cada todo toda todos todas también porque según antes ellos ellas otra otro otras otros solo sólo unos unas más menos muy está están hace hacen tiene tienen hacer aquí allí pero sino aunque mientras dentro fuera parte partes forma sobre qué cuál cuáles quien quién donde'
+).split(' '));
 
 function shuffled<T>(values: T[]): T[] {
   const out = [...values];

@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { buildDemoNotebook } from '@/lib/seed';
+import { buildDemoNotebook, isPristineDemo } from '@/lib/seed';
+import { useI18n } from '@/i18n';
 import { loadNotebook, saveNotebook, STORAGE_KEY, type StorageStatus } from '@/lib/storage';
 import { type Confidence, type Item, type NotebookData, type RatingValue, type Session, type Source, uid } from '@/lib/types';
 import { nextReview } from '@/lib/study';
@@ -43,6 +44,16 @@ export function NotebookProvider({ children }: { children: ReactNode }) {
     const r = saveNotebook(data);
     setStatus((prev) => (r.state === 'ok' && prev.state === 'ok' ? prev : r));
   }, [data]);
+
+  // Swap the untouched example document when the interface language changes.
+  const { language } = useI18n();
+  useEffect(() => {
+    setData((d) => {
+      const demo = d.sources.find((s) => s.origin === 'demo');
+      if (!demo || (demo.lang ?? 'en') === language || !isPristineDemo(d)) return d;
+      return { ...buildDemoNotebook(language), prefs: d.prefs };
+    });
+  }, [language]);
 
   const mutate = useCallback((fn: (d: NotebookData) => NotebookData) => setData((d) => fn(d)), []);
 

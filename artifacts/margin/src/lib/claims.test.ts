@@ -115,3 +115,8 @@ test('quiz uses cloze/source questions, unique options, and only approved eviden
   assert.ok(cloze && cloze.prompt.replace('______', cloze.answer) === item.excerpts[0].text);
   assert.equal(questions.find((q) => q.type === 'source')?.answer, 'rome:1');
 });
+
+test('Spanish questions after a heading are split from the heading', () => {
+  const segs = deriveTitle('Preguntas para investigar\n¿Cómo puede un docente distinguir entre participación y comprensión?');
+  assert.ok(!segs.startsWith('Preguntas'));
+});

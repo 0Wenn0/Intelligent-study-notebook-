@@ -10,7 +10,7 @@
     "languageSwitch": "Idioma de la interfaz",
     "mainNav": "Navegación principal",
     "langNotSaved": "No se pudo guardar el idioma. Se usará hasta que cierres la pestaña.",
-    "documentTitle": "Margin — Estudia tus lecturas sin perder la fuente"
+    "documentTitle": "{app} — Estudia tus lecturas sin perder la fuente"
   },
   "nav": {
     "overview": "Inicio",
@@ -89,7 +89,7 @@
     "full": "Ya no hay espacio en el navegador y tu último cambio no se guardó. Descarga una copia y elimina documentos que ya no uses.",
     "saveFailed": "No se pudo guardar tu último cambio: {error}",
     "invalidBackupJson": "Este archivo no es una copia válida.",
-    "invalidEnvelope": "Este archivo no es una copia de Margin.",
+    "invalidEnvelope": "Este archivo no es una copia de {app}.",
     "invalidBackup": "La copia está dañada o incompleta: {error}",
     "orphanCitation": "Una nota cita un documento que no está en la copia: {title}",
     "invalidExcerpt": "Una cita no coincide con su página: {title}",
@@ -102,14 +102,14 @@
     "title": "Algo salió mal",
     "body": "Esta parte de la app tuvo un error. El resto sigue funcionando.",
     "notFoundTitle": "Página no encontrada",
-    "notFoundBody": "Esta sección no existe en Margin."
+    "notFoundBody": "Esta sección no existe en {app}."
   },
   "pdf": {
     "loadFailed": "No se pudo abrir el lector de PDF en este navegador. Prueba pegando el texto.",
     "password": "Este PDF tiene contraseña. Quítasela y vuelve a subirlo.",
     "unreadable": "No se pudo leer este PDF. Puede estar dañado.",
-    "noText_one": "Este PDF no tiene texto seleccionable ({count} página). Parece escaneado y Margin no puede leer imágenes. Copia y pega el texto.",
-    "noText_other": "Este PDF no tiene texto seleccionable ({count} páginas). Parece escaneado y Margin no puede leer imágenes. Copia y pega el texto."
+    "noText_one": "Este PDF no tiene texto seleccionable ({count} página). Parece escaneado y {app} no puede leer imágenes. Copia y pega el texto.",
+    "noText_other": "Este PDF no tiene texto seleccionable ({count} páginas). Parece escaneado y {app} no puede leer imágenes. Copia y pega el texto."
   },
   "add": {
     "eyebrow": "Nuevo documento",
@@ -212,7 +212,7 @@
     "demoEyebrow": "Estás viendo un ejemplo",
     "demoBody": "El documento de ejemplo trata sobre entornos de aprendizaje. Sus frases están en «Por revisar» para que pruebes el proceso. Nada se guarda como nota sin tu aprobación.",
     "manage": "Ajustes y datos",
-    "lead": "Sube un PDF o tus apuntes. Margin te propone las frases clave, tú eliges cuáles guardar y luego practicas con tarjetas y cuestionarios. Cada nota muestra la página exacta de donde salió.",
+    "lead": "Sube un PDF o tus apuntes. {app} te propone las frases clave, tú eliges cuáles guardar y luego practicas con tarjetas y cuestionarios. Cada nota muestra la página exacta de donde salió.",
     "howTitle": "Cómo funciona",
     "how1Title": "Sube un documento",
     "how1Body": "Un PDF con texto o tus apuntes pegados.",
@@ -232,7 +232,7 @@
     "emptyBody": "Sube un PDF con texto, un archivo TXT o MD, o pega tus apuntes.",
     "demoBadge": "Ejemplo",
     "userBadge": "Tu documento",
-    "meta": "{pages} págs. · {items} notas · {topic}",
+    "meta": "{pages} págs. · {items} frases · {topic}",
     "demoNote": "Documento de ejemplo incluido en la app.",
     "imported": "Subido el {date}.",
     "importedFrom": "Subido el {date} desde {file}.",
@@ -298,7 +298,7 @@
     "openLibrary": "Ver Mis notas",
     "noDiscarded": "No hay frases descartadas",
     "noDiscardedBody": "Si descartas una frase, aparece aquí y la puedes recuperar.",
-    "checkAccurate": "El título y la explicación dicen lo mismo que la cita",
+    "checkAccurate": "La nota dice lo mismo que la cita",
     "checkWorthwhile": "Me sirve para estudiar",
     "candidateOf": "frase {n} de {total}",
     "shortcuts": "Atajos de teclado: A guardar · E editar · D descartar",
@@ -376,7 +376,7 @@
   "flash": {
     "card": "tarjeta {n} de {total}",
     "endSave": "terminar",
-    "recall": "Intenta recordar qué dice el documento sobre esto.",
+    "recall": "Completa la idea de memoria. Luego compárala con la cita.",
     "reveal": "Ver la cita",
     "rateAfter": "Compara con lo que recordaste. ¿Cómo te fue?",
     "again": "No lo recordé",
@@ -466,10 +466,13 @@
   },
   "welcome": {
     "eyebrow": "Bienvenida",
-    "title": "Margin te ayuda a estudiar lo que lees",
+    "title": "{app} te ayuda a estudiar lo que lees",
     "body": "Sube un PDF o tus apuntes. La app te propone las frases clave y tú eliges cuáles guardar. Luego practicas con tarjetas y cuestionarios, y cada respuesta te muestra la página exacta de donde salió.",
     "privacy": "Todo se queda en tu navegador: no necesitas cuenta y tu texto no se envía a ninguna IA.",
     "tryDemo": "Explorar el ejemplo",
     "upload": "Subir mi documento"
+  },
+  "demo": {
+    "topic": "Entornos de aprendizaje"
   }
 }

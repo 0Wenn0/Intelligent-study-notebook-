@@ -7,7 +7,7 @@ import { KINDS, type Item, type Source } from '@/lib/types';
 import { isDue, orderItems } from '@/lib/study';
 import { useNav, useNotebook } from '@/store/notebook';
 import { useI18n } from '@/i18n';
-import { DemoMark, Empty, ExcerptBlock, GeneratedLabelMark, Interpretation, KindBadge, PageHeader, SectionLabel, displayBody } from '@/components/bits';
+import { DemoMark, Empty, ExcerptBlock, GeneratedLabelMark, Interpretation, KindBadge, PageHeader, SectionLabel, displayBody, titleIsQuote } from '@/components/bits';
 import { ItemEditor } from '@/components/item-editor';
 import { cn } from '@/lib/utils';
 
@@ -238,7 +238,7 @@ function HowTo({ items }: { items: Item[] }) {
               <li key={it.id} className="grid grid-cols-[28px_1fr] gap-3 md:grid-cols-[36px_1fr]">
                 <span className="font-display text-2xl text-[hsl(var(--pencil))]">{n + 1}</span>
                 <div className="min-w-0">
-                  <div className="mb-2 break-words font-medium">{it.title}</div>
+                  {!titleIsQuote(it) && <div className="mb-2 break-words font-medium">{it.title}</div>}
                   {it.excerpts.map((e, k) => <ExcerptBlock key={k} excerpt={e} compact />)}
                 </div>
               </li>

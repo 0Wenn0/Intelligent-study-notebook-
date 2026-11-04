@@ -23,6 +23,7 @@ const schema = z.object({
       createdAt: z.string(),
       origin: z.enum(['demo', 'user']),
       fileName: z.string().optional(),
+      lang: z.enum(['en', 'es']).optional(),
       studyGoal: z.string().optional(),
       priorities: z.array(z.enum(PRIORITIES)).min(1).optional(),
     }),
